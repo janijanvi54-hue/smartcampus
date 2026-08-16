@@ -1,0 +1,27 @@
+# DSVV SmartCampus - Render Blueprint
+# https://render.com/docs/blueprint-spec
+#
+# BEFORE USE: replace the placeholder values below with your own, then set
+# DB_PASS (a secret) in the Render dashboard after the first deploy.
+services:
+  - type: web
+    name: smartcampus
+    runtime: docker
+    repo: https://github.com/janijanvi54-hue/smartcampus
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    envVars:
+      - key: DB_HOST
+        value: YOUR_DB_HOST
+      - key: DB_PORT
+        value: "3306"
+      - key: DB_NAME
+        value: smartcampus
+      - key: DB_USER
+        value: YOUR_DB_USER
+      - key: DB_PASS
+        sync: false
+      - key: APP_URL
+        value: https://smartcampus.onrender.com
